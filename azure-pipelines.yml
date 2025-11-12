@@ -10,8 +10,7 @@ steps:
   inputs:
     provider: 'azurerm'
     command: 'init'
-    workingDirectory: '$(System.DefaultWorkingDirectory)/terraform-azurerm_landingzone-framework/environments/'
-    backendServiceArm: 'wif'
+    workingDirectory: '$(System.DefaultWorkingDirectory)\environments'
     backendAzureRmStorageAccountName: 'stroageaccountdotnet'
     backendAzureRmContainerName: 'container'
     backendAzureRmKey: 'terraform.tfstate'
