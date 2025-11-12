@@ -1,5 +1,5 @@
 trigger: none
-pool: 'ubuntu-latest'
+pool: devops
 
 parameters:
 - name: Environments
