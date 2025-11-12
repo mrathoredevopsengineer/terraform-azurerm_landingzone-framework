@@ -1,23 +1,6 @@
 trigger: none
 pool: devops
 
-parameters:
-- name: Environments
-  displayName: Dev,stage,Prod
-  type: string
-  values:
-  - Dev
-  - Stage
-  - Prod
-
-- name: region
-  displayName: eastus,westus,centralus
-  type: string
-  values:
-  - eastus
-  - westus
-  - centralus
-
 steps:
 - task: TerraformInstaller@1
   inputs:
