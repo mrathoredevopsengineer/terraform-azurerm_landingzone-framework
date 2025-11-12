@@ -19,7 +19,12 @@ parameters:
   - centralus
 
 steps:
-- task: PowerShell@2
+- task: TerraformTask@5
   inputs:
-    targetType: 'inline'
-    script: 'terraform init'
+    provider: 'azurerm'
+    command: 'init'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/terraform-azurerm_landingzone-framework/environments/'
+    backendServiceArm: 'wif'
+    backendAzureRmStorageAccountName: 'stroageaccountdotnet'
+    backendAzureRmContainerName: 'container'
+    backendAzureRmKey: 'terraform.tfstate'
