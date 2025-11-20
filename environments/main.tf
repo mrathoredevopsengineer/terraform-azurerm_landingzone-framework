@@ -8,14 +8,14 @@ module "vnet" {
   vnet   = var.vnet
 }
 
-module "public_ips" {
-  source = "../modules/azurerm_public_ip"
-  public_ip = var.public_ip
-}
+# module "public_ips" {
+#   source = "../modules/azurerm_public_ip"
+#   public_ip = var.public_ip
+# }
 
 
 
-module "azurerm_compute" {
-  source = "../modules/azurerm_compute"
-  vms    = var.vms
-}
+# module "azurerm_compute" {
+#   source = "../modules/azurerm_compute"
+#   vms    = var.vms
+# }
