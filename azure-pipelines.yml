@@ -19,7 +19,7 @@ jobs:
       command: 'init'
       workingDirectory: '$(System.DefaultWorkingDirectory)\environments'
       backendServiceArm: 'wif'
-      backendAzureRmStorageAccountName: 'stroageaccountdotnet'
+      backendAzureRmStorageAccountName: 'remotestatefile'
       backendAzureRmContainerName: 'container'
       backendAzureRmKey: 'terraform-loop.tfstate'
 
@@ -44,7 +44,7 @@ jobs:
       command: 'init'
       workingDirectory: '$(System.DefaultWorkingDirectory)\environments'
       backendServiceArm: 'wif'
-      backendAzureRmStorageAccountName: 'stroageaccountdotnet'
+      backendAzureRmStorageAccountName: 'remotestatefile'
       backendAzureRmContainerName: 'container'
       backendAzureRmKey: 'terraform-loop.tfstate'
   - task: TerraformTask@5
