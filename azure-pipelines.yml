@@ -4,37 +4,53 @@ trigger:
     - main
     - feature/*
     
-pool: devops
-
-steps:
-- task: TerraformInstaller@1
-  inputs:
-    terraformVersion: 'latest'
-
-
-- task: TerraformTask@5
-  inputs:
-    provider: 'azurerm'
-    command: 'init'
-    workingDirectory: '$(System.DefaultWorkingDirectory)\environments'
-    backendServiceArm: 'wif'
-    backendAzureRmStorageAccountName: 'stroageaccountdotnet'
-    backendAzureRmContainerName: 'container'
-    backendAzureRmKey: 'terraform.tfstate'
+jobs:
+- job: InitPlan
+  pool: devops
+  steps:
+  - task: TerraformInstaller@1
+    inputs:
+      terraformVersion: 'latest'
 
 
-- task: TerraformTask@5
-  inputs:
-    provider: 'azurerm'
-    command: 'plan'
-    workingDirectory: '$(System.DefaultWorkingDirectory)\environments'
-    environmentServiceNameAzureRM: 'wif'
+  - task: TerraformTask@5
+    inputs:
+      provider: 'azurerm'
+      command: 'init'
+      workingDirectory: '$(System.DefaultWorkingDirectory)\environments'
+      backendServiceArm: 'wif'
+      backendAzureRmStorageAccountName: 'stroageaccountdotnet'
+      backendAzureRmContainerName: 'container'
+      backendAzureRmKey: 'terraform.tfstate'
 
 
-- task: TerraformTask@5
-  inputs:
-    provider: 'azurerm'
-    command: 'apply'
-    workingDirectory: '$(System.DefaultWorkingDirectory)\environments'
-    commandOptions: '--auto-apporve'
-    environmentServiceNameAzureRM: 'wif'
+  - task: TerraformTask@5
+    inputs:
+      provider: 'azurerm'
+      command: 'plan'
+      workingDirectory: '$(System.DefaultWorkingDirectory)\environments'
+      environmentServiceNameAzureRM: 'wif'
+
+
+
+- job: Apply
+  displayName: Apply
+  dependsOn: InitPlan
+  pool: devops
+  steps:
+  - task: TerraformTask@5
+    inputs:
+      provider: 'azurerm'
+      command: 'init'
+      workingDirectory: '$(System.DefaultWorkingDirectory)\environments'
+      backendServiceArm: 'wif'
+      backendAzureRmStorageAccountName: 'stroageaccountdotnet'
+      backendAzureRmContainerName: 'container'
+      backendAzureRmKey: 'terraform.tfstate'
+  - task: TerraformTask@5
+    inputs:
+      provider: 'azurerm'
+      command: 'apply'
+      workingDirectory: '$(System.DefaultWorkingDirectory)\environments'
+      commandOptions: '--auto-apporve'
+      environmentServiceNameAzureRM: 'wif'
