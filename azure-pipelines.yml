@@ -18,7 +18,7 @@ jobs:
       provider: 'azurerm'
       command: 'init'
       workingDirectory: '$(System.DefaultWorkingDirectory)\environments'
-      backendServiceArm: 'wif'
+      backendServiceArm: 'secret'
       backendAzureRmStorageAccountName: 'remotestatefile'
       backendAzureRmContainerName: 'container'
       backendAzureRmKey: 'terraform-loop.tfstate'
@@ -29,7 +29,7 @@ jobs:
       provider: 'azurerm'
       command: 'plan'
       workingDirectory: '$(System.DefaultWorkingDirectory)\environments'
-      environmentServiceNameAzureRM: 'wif'
+      environmentServiceNameAzureRM: 'secret'
 
 
 
@@ -43,7 +43,7 @@ jobs:
       provider: 'azurerm'
       command: 'init'
       workingDirectory: '$(System.DefaultWorkingDirectory)\environments'
-      backendServiceArm: 'wif'
+      backendServiceArm: 'secret'
       backendAzureRmStorageAccountName: 'remotestatefile'
       backendAzureRmContainerName: 'container'
       backendAzureRmKey: 'terraform-loop.tfstate'
@@ -53,4 +53,4 @@ jobs:
       command: 'apply'
       workingDirectory: '$(System.DefaultWorkingDirectory)\environments'
       commandOptions: '--auto-apporve'
-      environmentServiceNameAzureRM: 'wif'
+      environmentServiceNameAzureRM: 'secret'
