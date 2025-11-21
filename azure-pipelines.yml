@@ -52,5 +52,5 @@ jobs:
       provider: 'azurerm'
       command: 'apply'
       workingDirectory: '$(System.DefaultWorkingDirectory)\environments'
-      commandOptions: '--auto-apporve'
+      commandOptions: '--auto-approve'
       environmentServiceNameAzureRM: 'wif'
