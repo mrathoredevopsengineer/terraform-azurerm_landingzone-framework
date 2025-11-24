@@ -46,11 +46,11 @@ jobs:
       backendServiceArm: 'wif'
       backendAzureRmStorageAccountName: 'stroageaccountdotnet'
       backendAzureRmContainerName: 'container'
-      backendAzureRmKey: 'terraform.tfstate'
+      backendAzureRmKey: 'terraform-loop.tfstate'
   - task: TerraformTask@5
     inputs:
       provider: 'azurerm'
       command: 'apply'
       workingDirectory: '$(System.DefaultWorkingDirectory)\environments'
-      commandOptions: '--auto-apporve'
+      commandOptions: '--auto-approve'
       environmentServiceNameAzureRM: 'wif'
